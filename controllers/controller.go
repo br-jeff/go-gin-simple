@@ -45,5 +45,11 @@ func GetPlayerByID(c *gin.Context) {
 	id := c.Params.ByName("id")
 	database.DB.First(&player, id)
 
+	if player.ID == 0 {
+		c.JSON(http.StatusNotFound, gin.H{
+			"Not Found": "We don't found the player",
+		})
+	}
+
 	c.JSON(http.StatusOK, player)
 }
