@@ -12,5 +12,6 @@ func HandleRequest() {
 	r.GET("/:name", controller.GetByName)
 	r.POST("/player", controller.CreatePlayer)
 	r.GET("/player/:id", controller.GetPlayerByID)
+	r.DELETE("/player/:id", controller.DeletePlayer)
 	r.Run(":8080")
 }

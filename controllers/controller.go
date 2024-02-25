@@ -53,3 +53,16 @@ func GetPlayerByID(c *gin.Context) {
 
 	c.JSON(http.StatusOK, player)
 }
+
+func DeletePlayer(c *gin.Context) {
+	var player models.Player
+
+	id := c.Params.ByName("id")
+
+	database.DB.Delete(&player, id)
+
+	c.JSON(http.StatusOK, gin.H{
+		"data": "player was deleted",
+	})
+
+}
