@@ -19,3 +19,7 @@ func GetByName(c *gin.Context) {
 		"Hello": "How are you ?" + name,
 	})
 }
+
+func CreatePlayer(c *gin.Context) {
+
+}
