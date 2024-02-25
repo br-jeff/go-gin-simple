@@ -10,5 +10,6 @@ func HandleRequest() {
 	r := gin.Default()
 	r.GET("/players", controller.GetAllPlayers)
 	r.GET("/:name", controller.GetByName)
+	r.POST("/player", controller.CreatePlayer)
 	r.Run(":8080")
 }
