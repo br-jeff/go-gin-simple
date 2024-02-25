@@ -39,3 +39,11 @@ func CreatePlayer(c *gin.Context) {
 
 	c.JSON(http.StatusOK, player)
 }
+
+func GetPlayerByID(c *gin.Context) {
+	var player models.Player
+	id := c.Params.ByName("id")
+	database.DB.First(&player, id)
+
+	c.JSON(http.StatusOK, player)
+}
