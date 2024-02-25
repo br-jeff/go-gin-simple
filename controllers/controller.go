@@ -10,7 +10,11 @@ import (
 )
 
 func GetAllPlayers(c *gin.Context) {
-	c.JSON(http.StatusOK, models.Players)
+	var players []models.Player
+	database.DB.Find(&players)
+
+	c.JSON(http.StatusOK, players)
+
 }
 
 func GetByName(c *gin.Context) {
