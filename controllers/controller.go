@@ -66,3 +66,20 @@ func DeletePlayer(c *gin.Context) {
 	})
 
 }
+
+func EditPlayer(c *gin.Context) {
+	var player models.Player
+	id := c.Params.ByName("id")
+
+	database.DB.First(&player, id)
+
+	if err := c.ShouldBindJSON(&player); err != nil {
+		c.JSON(http.StatusOK, gin.H{
+			"Error": err.Error(),
+		})
+		return
+	}
+
+	database.DB.Model(&player).UpdateColumns(player)
+	c.JSON(http.StatusOK, player)
+}

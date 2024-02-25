@@ -13,5 +13,6 @@ func HandleRequest() {
 	r.POST("/player", controller.CreatePlayer)
 	r.GET("/player/:id", controller.GetPlayerByID)
 	r.DELETE("/player/:id", controller.DeletePlayer)
+	r.PATCH("/player/:id", controller.EditPlayer)
 	r.Run(":8080")
 }
