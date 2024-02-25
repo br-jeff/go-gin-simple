@@ -83,3 +83,17 @@ func EditPlayer(c *gin.Context) {
 	database.DB.Model(&player).UpdateColumns(player)
 	c.JSON(http.StatusOK, player)
 }
+
+func FindByDocument(c *gin.Context) {
+	var player models.Player
+	document := c.Param("document")
+	database.DB.Where(&models.Player{Document: document}).First(&player)
+
+	if player.ID == 0 {
+		c.JSON(http.StatusNotFound, gin.H{
+			"Not Found": "We don't found the player",
+		})
+	}
+
+	c.JSON(http.StatusOK, player)
+}

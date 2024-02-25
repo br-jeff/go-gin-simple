@@ -14,5 +14,6 @@ func HandleRequest() {
 	r.GET("/player/:id", controller.GetPlayerByID)
 	r.DELETE("/player/:id", controller.DeletePlayer)
 	r.PATCH("/player/:id", controller.EditPlayer)
+	r.GET("/player/search/:document", controller.FindByDocument)
 	r.Run(":8080")
 }
