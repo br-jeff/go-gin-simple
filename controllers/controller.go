@@ -12,3 +12,11 @@ func GetAllPlayers(c *gin.Context) {
 		"name": "Neymar",
 	})
 }
+
+func GetByName(c *gin.Context) {
+	name := c.Params.ByName("name")
+
+	c.JSON(http.StatusOK, gin.H{
+		"Hello": "How are you ?" + name,
+	})
+}

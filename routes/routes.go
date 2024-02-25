@@ -9,5 +9,6 @@ import (
 func HandleRequest() {
 	r := gin.Default()
 	r.GET("/players", controller.GetAllPlayers)
+	r.GET("/:name", controller.GetByName)
 	r.Run(":8080")
 }
